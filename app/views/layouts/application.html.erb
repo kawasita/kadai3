@@ -25,7 +25,7 @@
             <% if user_signed_in? %>
               <li class="nav-link text-light">
                 <i class="fa-solid fa-house-chimney"></i>
-                <%= link_to "Home", books_path(current_user.id) %>
+                <%= link_to "Home", user_path(current_user.id) %>
               </li>
               <li class="nav-link text-light">
                 <i class="fa-solid fa-users"></i>
@@ -37,7 +37,7 @@
               </li>
               <li class="nav-link text-light">
                 <i class="fa-solid fa-right-from-bracket"></i>
-                <%= link_to "Log out", root_path, method: :delete %>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
               </li>
             <% else %>
               <li class="nav-link text-light">
