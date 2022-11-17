@@ -2,17 +2,25 @@
   <div class="row">
     <div class="col-sm-12 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>User info</h2>
+      <% if @user.errors.any? %>
+        <%= @user.errors.count %>errors prohibited this book from being saved:
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+      <% end %>
       <%= form_with model: @user do |f| %>
         <div class="form-group">
-          <label for="inputname">名前</label>
+          <label for="inputname">名前</label><br>
           <%= f.text_field :name, autofocus: true, id:"name", placeholder:"名前", class:"form-cotrol" %>
         </div>
         <div class="form-group">
-          <label for="inputimage">プロフィール画像</label>
-          <%= f.file_field :image, id:"user_profile_image", accept: "image/*", class:"form-control-file" %>
+          <label for="inputprofile_image">プロフィール画像</label><br>
+          <%= f.file_field :profile_image, id:"user_profile_image", accept: "image/*", class:"form-control-file" %>
         </div>
         <div class="form-group">
-          <label for="inputintroduction">自己紹介文</label>
+          <label for="inputintroduction">自己紹介文</label><br>
           <%= f.text_area :introduction,　autofocus: true, id:"introduction", placeholder: "自己紹介文", class:"form-cotrol" %>
         </div>
         <div class="form-group">

@@ -1,5 +1,17 @@
-<%= render 'users/user', user: @user %>
-<%= render 'books/book', book: @book %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <% if @user.errors.any? %>
+        <%= @user.errors.count %>errors prohibited this book from being saved:
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+      <% end %>
+
+    <%= render 'users/user', user: @user %>
+    <%= render 'books/book', book: @book %>
     
     <div class="col-md-8 offset-md-1">
       <h2>Users</h2>

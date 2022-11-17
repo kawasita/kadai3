@@ -25,7 +25,9 @@ class BooksController < ApplicationController
       flash[:notice] = "You successfully completed your post."
       redirect_to book_path(@book.id)
     else 
-      render :show
+      @user = current_user
+      @books = Book.all
+      render :index
     end
   end
 
