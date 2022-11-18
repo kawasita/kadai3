@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @book = Book.new
     @user = current_user
   end
-  
+
   def edit
     is_matching_login_user
     @user = User.find(params[:id])
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
-  
+
   def is_matching_login_user
     user_id = params[:id].to_i
     login_user_id = current_user.id
